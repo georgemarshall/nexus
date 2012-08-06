@@ -2,17 +2,17 @@ from django import template
 from django.utils.datastructures import SortedDict
 
 import nexus
-from nexus import conf
 from nexus.modules import NexusModule
 
 register = template.Library()
 
 
+@register.simple_tag
 def nexus_version():
     return nexus.VERSION
-register.simple_tag(nexus_version)
 
 
+@register.inclusion_tag('nexus/navigation.html', takes_context=True)
 def show_navigation(context):
     site = context.get('nexus_site', NexusModule.get_global('site'))
     request = NexusModule.get_request()
@@ -55,4 +55,3 @@ def show_navigation(context):
         'nexus_site': site,
         'category_link_set': category_link_set.itervalues(),
     }
-register.inclusion_tag('nexus/navigation.html', takes_context=True)(show_navigation)

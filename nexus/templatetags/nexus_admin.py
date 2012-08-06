@@ -2,6 +2,8 @@ from django import template
 
 register = template.Library()
 
+
+@register.inclusion_tag('nexus/admin/submit_line.html', takes_context=True)
 def submit_row(context):
     """
     Displays the row of buttons for delete and save. 
@@ -22,4 +24,3 @@ def submit_row(context):
         'is_popup': is_popup,
         'show_save': True,
     }
-submit_row = register.inclusion_tag('nexus/admin/submit_line.html', takes_context=True)(submit_row)
