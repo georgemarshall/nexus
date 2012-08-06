@@ -15,21 +15,22 @@ class mytest(test):
         from runtests import runtests
         runtests()
 
+
 setup(
     name='nexus',
     version='0.2.3',
     author='David Cramer',
     author_email='dcramer@gmail.com',
     url='http://github.com/dcramer/nexus',
-    description = 'An extendable admin interface',
+    description='An extendable admin interface',
     packages=find_packages(),
     zip_safe=False,
     install_requires=[],
-    tests_require = [
+    tests_require=[
         'Django',
         'South',
     ],
-    test_suite = 'nexus.tests',
+    test_suite='nexus.tests',
     include_package_data=True,
     cmdclass={"test": mytest},
     classifiers=[
