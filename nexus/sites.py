@@ -13,8 +13,6 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.static import was_modified_since
 
-from nexus import conf
-
 import mimetypes
 import os
 import os.path
@@ -146,7 +144,6 @@ class NexusSite(object):
         context.update({
             'request': request,
             'nexus_site': self,
-            'nexus_media_prefix': conf.MEDIA_PREFIX.rstrip('/'),
         })
         return context
 
